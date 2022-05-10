@@ -6,14 +6,14 @@
 лучше обойтись исключительно массивами.*/
 
 // Печать массива
-void PrintArray(string[] stringArray)           
+void PrintArray(string[] stringArray)
 {
     for (int i = 0; i < stringArray.Length; i++)
         Console.Write(stringArray[i] + " ");
 }
 
 // Поиск кол-ва элементов, размер которых больше или равных 3 символам.
-int FindElements(string[] stringArray, int length)           
+int FindElements(string[] stringArray, int length)
 {
     int count = 0;
     foreach (string s in stringArray)
@@ -24,7 +24,7 @@ int FindElements(string[] stringArray, int length)
 }
 
 // Создание нового массива из элементов заданного массива, длина которых меньше или равна 3 символам. 
-string[] NewArray(string[] stringArray, int count, int length, int i = 0)           
+string[] NewArray(string[] stringArray, int count, int length, int i = 0)
 {
     string[] newStringArray = new string[count];
     foreach (string s in stringArray)
@@ -44,5 +44,12 @@ int countElement = FindElements(firstArray, lengthString);         // Перем
 Console.WriteLine("Изначально заданный массив: ");
 PrintArray(firstArray);
 Console.WriteLine();
-Console.WriteLine($"Массив, сформированный из строк имеющегося массива, длина которых меньше либо равна {lengthString} символа: ");
-PrintArray(NewArray(firstArray, countElement, lengthString));
+if (countElement == 0)
+{
+    Console.WriteLine($"Массив не имеет элементов, длина которых меньше либо равна {lengthString} символа");
+}
+else
+{
+    Console.WriteLine($"Массив, сформированный из строк имеющегося массива, длина которых меньше либо равна {lengthString} символа: ");
+    PrintArray(NewArray(firstArray, countElement, lengthString));
+}
