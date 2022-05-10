@@ -5,12 +5,15 @@
 При решении не рекомендуется пользоваться коллекциями, 
 лучше обойтись исключительно массивами.*/
 
-void PrintArray(string[] stringArray)           //Метод для печати массива
+// Печать массива
+void PrintArray(string[] stringArray)           
 {
     for (int i = 0; i < stringArray.Length; i++)
         Console.Write(stringArray[i] + " ");
 }
-int FindElements(string[] stringArray, int length)           // Функция поиска кол-ва элементов (<= 3). Необходима для определения размера нового массива
+
+// Поиск кол-ва элементов, размер которых больше или равных 3 символам.
+int FindElements(string[] stringArray, int length)           
 {
     int count = 0;
     foreach (string s in stringArray)
@@ -19,7 +22,9 @@ int FindElements(string[] stringArray, int length)           // Функция �
     }
     return count;
 }
-string[] NewArray(string[] stringArray, int count, int length, int i = 0)           // Функция создания нового массива с условием (<= 3) из существующего массива
+
+// Создание нового массива из элементов заданного массива, длина которых меньше или равна 3 символам. 
+string[] NewArray(string[] stringArray, int count, int length, int i = 0)           
 {
     string[] newStringArray = new string[count];
     foreach (string s in stringArray)
@@ -34,8 +39,10 @@ string[] NewArray(string[] stringArray, int count, int length, int i = 0)       
 }
 
 string[] firstArray = { "Раз", "Два", "Три", "Четыре", "Пять", "Я", "Иду", "Искать", ":-)" };          // Заданный массив строк
-int lengthString = 3;     //Длина искомых строк (по условию задачи равна 3)
-int countElement = FindElements(firstArray, lengthString);         // Данная переменная определяет размер нового массива
-PrintArray(firstArray);            // Вывод заданного массива в терминал
+int lengthString = 3;     //Длина искомых строк (по условию задачи равна 3 символам)
+int countElement = FindElements(firstArray, lengthString);         // Переменная для определения размера нового массива
+Console.WriteLine("Изначально заданный массив: ");
+PrintArray(firstArray);
 Console.WriteLine();
-PrintArray(NewArray(firstArray, countElement, lengthString));         //Вывод искомого массива в терминал
+Console.WriteLine($"Массив, сформированный из строк имеющегося массива, длина которых меньше либо равна {lengthString} символа: ");
+PrintArray(NewArray(firstArray, countElement, lengthString));
