@@ -10,7 +10,7 @@ void PrintArray(string[] stringArray)           //Метод для печати
     for (int i = 0; i < stringArray.Length; i++)
         Console.Write(stringArray[i] + " ");
 }
-int FindElement(string[] stringArray, int length = 3)           // Функция поиска кол-ва элементов (<= 3). Необходима для определения размера нового массива
+int FindElements(string[] stringArray, int length)           // Функция поиска кол-ва элементов (<= 3). Необходима для определения размера нового массива
 {
     int count = 0;
     foreach (string s in stringArray)
@@ -19,13 +19,12 @@ int FindElement(string[] stringArray, int length = 3)           // Функци�
     }
     return count;
 }
-
-string[] NewArray(string[] stringArray, int count, int i = 0)           // Функция создания нового массива с условием (<= 3) из существующего массива
+string[] NewArray(string[] stringArray, int count, int length, int i = 0)           // Функция создания нового массива с условием (<= 3) из существующего массива
 {
     string[] newStringArray = new string[count];
     foreach (string s in stringArray)
     {
-        if (s.Length <= 3)
+        if (s.Length <= length)
         {
             newStringArray[i] = s;
             i++;
@@ -34,8 +33,9 @@ string[] NewArray(string[] stringArray, int count, int i = 0)           // Фу�
     return newStringArray;
 }
 
-string[] firstArray = { "Раз", "Два", "Три", "Четыре", "Пять", "Я", "Иду", "Искать" };          // Заданный массив строк
-int countElement = FindElement(firstArray);         // Данная переменная определяет размер нового массива
-PrintArray (firstArray);            // Вывод заданного массива в терминал
+string[] firstArray = { "Раз", "Два", "Три", "Четыре", "Пять", "Я", "Иду", "Искать", ":-)" };          // Заданный массив строк
+int lengthString = 3;     //Длина искомых строк (по условию задачи равна 3)
+int countElement = FindElements(firstArray, lengthString);         // Данная переменная определяет размер нового массива
+PrintArray(firstArray);            // Вывод заданного массива в терминал
 Console.WriteLine();
-PrintArray(NewArray(firstArray, countElement));         //Вывод искомого массива в терминал
+PrintArray(NewArray(firstArray, countElement, lengthString));         //Вывод искомого массива в терминал
